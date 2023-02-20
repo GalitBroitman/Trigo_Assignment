@@ -1,0 +1,15 @@
+# Use a Node.js base image
+FROM node:18
+
+# create working directories
+RUN mkdir -p /app
+
+# Install app dependencies
+COPY math/* /app
+
+# Set the working directory to /app and build the app
+WORKDIR /app
+RUN npm install
+
+# Start the app
+CMD ["npm", "start"]

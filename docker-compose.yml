@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  nats:
+    image: nats:latest
+    # ports:
+    #   - '4222:4222'
+
+  gateway:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.api_gateway
+    ports:
+      - '80:80'
+    depends_on:
+      - nats
+
+  math:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.math
+    # ports:
+    #   - '80:80'
+    depends_on:
+      - nats
+
+  echo:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.echo
+    # ports:
+    #   - '80:80'
+    depends_on:
+      - nats
