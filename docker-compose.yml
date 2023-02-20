@@ -19,8 +19,6 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile.math
-    # ports:
-    #   - '80:80'
     depends_on:
       - nats
 
@@ -28,7 +26,5 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile.echo
-    # ports:
-    #   - '80:80'
     depends_on:
       - nats
